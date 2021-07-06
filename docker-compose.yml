@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  nodejs:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: nodejs
+    container_name: nodejs
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "3030:3030"
+    volumes:
+      - .:/src
+      - node_modules:/node_modules
+    command: /node_modules/.bin/nodemon index.js
+    networks:
+      - laradock_backend
+
+volumes:
+  node_modules:
+
+networks:    
+  laradock_backend:
+    external: true
