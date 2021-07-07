@@ -9,10 +9,6 @@ async function startServer() {
 
     consumers({ kafkaClient, config });
 
-    // app.use('/', (req, res) => {
-    //     res.send("this is fast");
-    // })
-
     app.listen(config.port, () => {
         console.log(`
       ################################################
