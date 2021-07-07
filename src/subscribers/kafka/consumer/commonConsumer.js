@@ -11,11 +11,11 @@ module.exports = async ({ kafkaClient, config, consumerGroup }) => {
 
     await consumer.run({
         eachMessage: async ({ topic, partition, message }) => {
-            let handler = handlers.filter(handler => {
+            let handler = handlers.find(handler => {
                 return handler.topic === topic
             });
 
-            await handler[0].handle({ message })
+            await handler.handle({ message })
         },
     });
 
