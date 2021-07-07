@@ -1,12 +1,19 @@
 const createConsumer = require('./commonConsumer');
 const yunxin = require('./handlers/YunXinTopicHandler')
+const yunxin2 = require('./handlers/YunXinTopicHandler2')
 
-const topicHandlers = [
-    yunxin
+const consumerGroups = [
+    {
+        groupId : 'notification-group',
+        topicHandlers : [
+            yunxin,
+            yunxin2
+        ]
+    }
 ]
 
 module.exports = async ({ kafkaClient, config }) => {
-    topicHandlers.forEach(async (consumerHandler) => {
-        await createConsumer({ kafkaClient, config, consumerHandler });
+    consumerGroups.forEach(async (consumerGroup) => {
+        await createConsumer({ kafkaClient, config, consumerGroup });
     });
 };

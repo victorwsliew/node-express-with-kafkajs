@@ -1,13 +1,21 @@
-module.exports = async ({ kafkaClient, config, consumerHandler }) => {
-    let consumerGroupId = consumerHandler.groupId ?? config.kafka.consumer.groupId;
+module.exports = async ({ kafkaClient, config, consumerGroup }) => {
+    let consumerGroupId = consumerGroup.groupId ?? config.kafka.consumer.groupId;
     let consumer = kafkaClient.consumer({ groupId: consumerGroupId });
-
-    await consumer.connect();
-    await consumer.subscribe({ topic: consumerHandler.topic, fromBeginning: true });
+    let handlers = consumerGroup.topicHandlers;
     
+    await consumer.connect();
+
+    handlers.forEach(async (handler) => {
+        await consumer.subscribe({ topic: handler.topic, fromBeginning: true });
+    });
+
     await consumer.run({
-        eachMessage: async ({ message }) => {
-            await consumerHandler.handle({ message })
+        eachMessage: async ({ topic, partition, message }) => {
+            let handler = handlers.filter(handler => {
+                return handler.topic === topic
+            });
+
+            await handler[0].handle({ message })
         },
     });
 
