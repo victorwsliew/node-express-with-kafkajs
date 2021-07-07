@@ -15,6 +15,12 @@ services:
       - .:/src
       - node_modules:/node_modules
     command: /node_modules/.bin/nodemon index.js
+    networks:
+      - laradock_backend
 
 volumes:
   node_modules:
+
+networks:    
+  laradock_backend:
+    external: true

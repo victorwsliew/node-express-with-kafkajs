@@ -4,7 +4,7 @@
   "description": "POC test node with kafkajs",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "npx nodemon src/index.js"
   },
   "repository": {
     "type": "git",
