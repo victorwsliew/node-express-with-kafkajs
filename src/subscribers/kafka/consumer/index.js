@@ -2,7 +2,7 @@ const createConsumer = require('./commonConsumer');
 const notificationGroup = require('./groups/notification');
 
 const consumerGroups = [
-    notificationGroup
+    notificationGroup,
 ]
 
 module.exports = async ({ kafkaClient, config }) => {

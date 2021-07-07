@@ -1,6 +1,6 @@
 let consumerHandler = async ({ message }) => {
     await console.log({
-        yunxin1: message.value.toString(),
+        yunxin: message.value.toString(),
     })
 };
 

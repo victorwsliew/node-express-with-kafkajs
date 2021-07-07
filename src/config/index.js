@@ -4,7 +4,6 @@ process.env.PORT = process.env.PORT || 3030;
 
 const envFound = require('dotenv').config();
 if (envFound.error) {
-    // This error should crash whole process
     throw new Error("Couldn't find .env file");
 }
 
