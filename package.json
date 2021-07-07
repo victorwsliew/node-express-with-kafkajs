@@ -1,12 +1,21 @@
 {
-  "name": "yippi-event-hub",
-  "version": "0.1.0",
-  "private": true,
+  "name": "node-with-kafkajs",
+  "version": "1.0.0",
+  "description": "POC test node with kafkajs",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victorwsliew/node-express-with-kafkajs.git"
+  },
+  "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/victorwsliew/node-express-with-kafkajs/issues"
+  },
+  "homepage": "https://github.com/victorwsliew/node-express-with-kafkajs#readme",
   "dependencies": {
     "@feathersjs/express": "^4.5.11",
     "@feathersjs/feathers": "^4.5.11",
