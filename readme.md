@@ -1,6 +1,6 @@
-# yippi-event-hub
+# node-with-kafkajs
 
-> yippi hub connect with kafka
+> event hub connect with kafka
 
 ## Build Setup
 
